@@ -3,7 +3,15 @@ open Akka.Serialization
 open Akka.Actor
 open System
 
-type Message =
-    | Gossip of int list list * int
-    | StopGossip of IActorRef
-    | StartGossip of int list list
+type GossipMessageTypes =
+    | InitNeighbors of IActorRef list
+    | InitializeVariables of int
+    | HeardMessage
+    | StartPushSum of Double
+    | ComputePushSum of Double * Double * Double
+    | Result of Double * Double
+    | InitTimer of int
+    | TotalNodes of int
+    | ActivateWorker 
+    | DoWork
+    | AddNeighbors
