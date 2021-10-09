@@ -102,6 +102,7 @@ let Coordinator(mailbox: Actor<_>) =
             if count = totalNodes then
                 timer.Stop()
                 printfn "Time for convergence: %f ms" timer.Elapsed.TotalMilliseconds
+                printfn $"({nodes}, {timer.Elapsed.TotalMilliseconds})"
                 Environment.Exit(0)
         | Result (sum, weight) ->
             count <- count + 1
@@ -109,6 +110,7 @@ let Coordinator(mailbox: Actor<_>) =
                 timer.Stop()
                 
                 printfn "Time for convergence: %f ms" timer.Elapsed.TotalMilliseconds
+                printfn $"({nodes}, {timer.Elapsed.TotalMilliseconds})"
                 Environment.Exit(0)
         | InitTimer strtTime -> start <- strtTime
         | TotalNodes n -> totalNodes <- n
